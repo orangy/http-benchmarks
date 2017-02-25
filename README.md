@@ -61,3 +61,6 @@ ktor.KtorJettyBenchmark.hello         thrpt    5  37.258 ±  9.114  ops/ms
 ktor.KtorNettyBenchmark.hello         thrpt    5  36.353 ±  1.352  ops/ms
 nanohttpd.NanoHttpBenchmark.hello     thrpt    5  19.837 ±  2.244  ops/ms
 ```
+
+# Thanks
+Based on prior work by [rocketraman](https://github.com/rocketraman/kotlin-web-hello-world)
