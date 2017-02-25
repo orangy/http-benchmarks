@@ -33,9 +33,10 @@ Servers are setup with minimum configuration on purpose.
  
 I'm interested in 
 * other JVM http servers 
+  * Ratpack
+  * com.sun.net.httpserver (?)
 * other JVM http clients 
 * comments on better benchmarking techniques (please, be specific)
-* 
 
 # Results
 JMH is run with 32 threads sending requests against server using OkHttp. 
@@ -62,5 +63,5 @@ ktor.KtorNettyBenchmark.hello         thrpt    5  36.353 ±  1.352  ops/ms
 nanohttpd.NanoHttpBenchmark.hello     thrpt    5  19.837 ±  2.244  ops/ms
 ```
 
-# Thanks
+## Thanks
 Based on prior work by [rocketraman](https://github.com/rocketraman/kotlin-web-hello-world)
