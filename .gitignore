@@ -1,0 +1,12 @@
+target
+.idea/*
+!.idea/runConfigurations
+!.idea/runConfigurations/*
+!.idea/vcs.xml
+out
+*.iml
+
+*.versionsBackup
+*.releaseBackup
+release.properties
+
