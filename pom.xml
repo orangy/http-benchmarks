@@ -58,6 +58,22 @@
             <version>1.7.24</version>
         </dependency>
 
+        <!-- Jetty -->
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-server</artifactId>
+            <version>9.4.2.v20170220</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-webapp</artifactId>
+            <version>9.4.2.v20170220</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty.websocket</groupId>
+            <artifactId>websocket-servlet</artifactId>
+            <version>9.4.2.v20170220</version>
+        </dependency>
 
         <!-- Ktor -->
         <dependency>
@@ -120,10 +136,18 @@
             <version>master-SNAPSHOT</version>
         </dependency>
 
+        <!-- Hexagon -->
         <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-server</artifactId>
-            <version>9.4.2.v20170220</version>
+            <groupId>co.there4</groupId>
+            <artifactId>hexagon</artifactId>
+            <version>0.10.8</version>
+        </dependency>
+
+        <!-- Grizzly -->
+        <dependency>
+            <groupId>org.glassfish.grizzly</groupId>
+            <artifactId>grizzly-http-server</artifactId>
+            <version>2.3.29</version>
         </dependency>
 
         <dependency>
