@@ -25,7 +25,7 @@ open class AkkaHttpBenchmark : HttpBenchmarkBase() {
     }
 
     override fun stopServer() {
-        system.terminate().value()
+        system.shutdown()
     }
 }
 
