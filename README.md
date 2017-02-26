@@ -3,30 +3,43 @@ _Order is alphabetical_
 
 #### Measured
 * AkkaHttp
+* Colossus
+* FluentHttp 
+* Grizzly
 * Jetty
 * Ktor (Jetty & Netty)
 * NanoHttp
 * Netty
+* NinjaFramework
 * SparkJava
 * Undertow
 * Vert.x
-* Grizzly
 
 #### Excluded
-* FluentHttp – too slow
 * Hexagon – doesn't start with latest Jetty
 * Wasabi – doesn't survive the load
 
-# Using
-
+# Building
 * Run maven to fetch dependencies, compile code and generate JMH sources.
 ```
 mvn clean package
 ```
 
-* Import project into IntelliJ IDEA (or your favorite IDE with Kotlin support)
+# Running benchmarks
+
+From IntelliJ (or your favorite IDE with Kotlin support):
 * Open Benchmarks.kt and run `main` to benchmark the whole suite
 * or, open xxxBenchmark.kt and run benchmark for specific server
+
+# Profiling & Daemon
+If you are working on adding your favorite server to benchmark to send me a PR, you might want to
+run it as daemon to see if response is actually what it should be. Or you might want to profile your framework
+if you think it is underperforming. 
+
+Add the following to the command line arguments to switch modes:
+* `profile` – to run multithreaded load simulation without JMH (see BenchmarkRunner.kt for iterations) 
+* `daemon` – to run just setup for a benchmark and wait for a key, so you can point your browser to `localhost:5678`
+  and see what's going on
 
 # Contributing
 
@@ -54,17 +67,19 @@ Benchmark results are from my machine, your mileage may vary.
 
 ```
 Benchmark                                     Mode  Cnt   Score   Error   Units
-o.k.c.h.b.undertow.UndertowBenchmark.hello   thrpt    5  67.198 ± 1.248  ops/ms
-o.k.c.h.b.netty.NettyBenchmark.hello         thrpt    5  64.535 ± 1.202  ops/ms
-o.k.c.h.b.jetty.JettyBenchmark.hello         thrpt    5  60.434 ± 0.798  ops/ms
-o.k.c.h.b.vertx.VertxBenchmark.hello         thrpt    5  58.670 ± 2.461  ops/ms
-o.k.c.h.b.grizzly.GrizzlyBenchmark.hello     thrpt    5  52.120 ± 1.019  ops/ms
-o.k.c.h.b.spark.SparkBenchmark.hello         thrpt    5  47.134 ± 0.876  ops/ms
-o.k.c.h.b.ktor.KtorJettyBenchmark.hello      thrpt    5  42.336 ± 0.756  ops/ms
-o.k.c.h.b.akka.AkkaHttpBenchmark.hello       thrpt    5  40.740 ± 2.619  ops/ms
-o.k.c.h.b.ktor.KtorNettyBenchmark.hello      thrpt    5  36.859 ± 1.227  ops/ms
-o.k.c.h.b.nanohttpd.NanoHttpBenchmark.hello  thrpt    5  19.870 ± 2.650  ops/ms
-```
+o.k.c.h.b.undertow.UndertowBenchmark.hello      thrpt    5  70.043 ± 0.937  ops/ms
+o.k.c.h.b.netty.NettyBenchmark.hello            thrpt    5  66.252 ± 0.505  ops/ms
+o.k.c.h.b.colossus.ColossusBenchmark.hello      thrpt    5  63.126 ± 1.389  ops/ms
+o.k.c.h.b.vertx.VertxBenchmark.hello            thrpt    5  59.839 ± 0.818  ops/ms```
+o.k.c.h.b.jetty.JettyBenchmark.hello            thrpt    5  56.719 ± 1.922  ops/ms
+o.k.c.h.b.grizzly.GrizzlyBenchmark.hello        thrpt    5  51.892 ± 1.361  ops/ms
+o.k.c.h.b.spark.SparkBenchmark.hello            thrpt    5  48.565 ± 0.765  ops/ms
+o.k.c.h.b.ktor.KtorJettyBenchmark.hello         thrpt    5  42.163 ± 0.840  ops/ms
+o.k.c.h.b.akka.AkkaHttpBenchmark.hello          thrpt    5  39.109 ± 1.636  ops/ms
+o.k.c.h.b.ktor.KtorNettyBenchmark.hello         thrpt    5  36.553 ± 0.924  ops/ms
+o.k.c.h.b.nanohttpd.NanoHttpBenchmark.hello     thrpt    5  20.401 ± 0.719  ops/ms
+o.k.c.h.b.ninjaframework.NinjaBenchmark.hello   thrpt    5  12.194 ± 0.210  ops/ms
+o.k.c.h.b.fluenthttp.FluentHttpBenchmark.hello  thrpt    5   1.207 ± 0.036  ops/ms
 
 ## Thanks
 Based on prior work by [rocketraman](https://github.com/rocketraman/kotlin-web-hello-world)
