@@ -65,21 +65,43 @@ Benchmark results are from my machine, your mileage may vary.
 > 16 GB 1600 MHz DDR3,
 > macOS Sierra 10.12.3
 
+## Performance
+
 ```
-Benchmark                                     Mode  Cnt   Score   Error   Units
-o.k.c.h.b.undertow.UndertowBenchmark.hello      thrpt    5  70.043 ± 0.937  ops/ms
-o.k.c.h.b.netty.NettyBenchmark.hello            thrpt    5  66.252 ± 0.505  ops/ms
-o.k.c.h.b.colossus.ColossusBenchmark.hello      thrpt    5  63.126 ± 1.389  ops/ms
-o.k.c.h.b.vertx.VertxBenchmark.hello            thrpt    5  59.839 ± 0.818  ops/ms```
-o.k.c.h.b.jetty.JettyBenchmark.hello            thrpt    5  56.719 ± 1.922  ops/ms
-o.k.c.h.b.grizzly.GrizzlyBenchmark.hello        thrpt    5  51.892 ± 1.361  ops/ms
-o.k.c.h.b.spark.SparkBenchmark.hello            thrpt    5  48.565 ± 0.765  ops/ms
-o.k.c.h.b.ktor.KtorJettyBenchmark.hello         thrpt    5  42.163 ± 0.840  ops/ms
-o.k.c.h.b.akka.AkkaHttpBenchmark.hello          thrpt    5  39.109 ± 1.636  ops/ms
-o.k.c.h.b.ktor.KtorNettyBenchmark.hello         thrpt    5  36.553 ± 0.924  ops/ms
-o.k.c.h.b.nanohttpd.NanoHttpBenchmark.hello     thrpt    5  20.401 ± 0.719  ops/ms
-o.k.c.h.b.ninjaframework.NinjaBenchmark.hello   thrpt    5  12.194 ± 0.210  ops/ms
-o.k.c.h.b.fluenthttp.FluentHttpBenchmark.hello  thrpt    5   1.207 ± 0.036  ops/ms
+Benchmark                                        Mode  Cnt   Score   Error   Units
+o.k.c.h.b.undertow.UndertowBenchmark.hello      thrpt    5  69.635 ± 0.279  ops/ms
+o.k.c.h.b.netty.NettyBenchmark.hello            thrpt    5  66.087 ± 2.201  ops/ms
+o.k.c.h.b.colossus.ColossusBenchmark.hello      thrpt    5  63.633 ± 1.191  ops/ms
+o.k.c.h.b.vertx.VertxBenchmark.hello            thrpt    5  61.173 ± 2.105  ops/ms
+o.k.c.h.b.jetty.JettyBenchmark.hello            thrpt    5  57.401 ± 1.864  ops/ms
+o.k.c.h.b.grizzly.GrizzlyBenchmark.hello        thrpt    5  52.446 ± 3.108  ops/ms
+o.k.c.h.b.spark.SparkBenchmark.hello            thrpt    5  48.057 ± 1.223  ops/ms
+o.k.c.h.b.ktor.KtorJettyBenchmark.hello         thrpt    5  42.654 ± 0.672  ops/ms
+o.k.c.h.b.akka.AkkaHttpBenchmark.hello          thrpt    5  39.562 ± 3.835  ops/ms
+o.k.c.h.b.ktor.KtorNettyBenchmark.hello         thrpt    5  35.735 ± 2.110  ops/ms
+o.k.c.h.b.nanohttpd.NanoHttpBenchmark.hello     thrpt    5  20.259 ± 1.828  ops/ms
+o.k.c.h.b.ninjaframework.NinjaBenchmark.hello   thrpt    5  12.045 ± 0.674  ops/ms
+o.k.c.h.b.fluenthttp.FluentHttpBenchmark.hello  thrpt    5   1.219 ± 0.040  ops/ms
+```
+
+## Memory
+
+Allocation rates per request as reported by JMH GC profiler.
+```
+o.k.c.h.b.jetty.JettyBenchmark.hello:·gc.alloc.rate.norm                              thrpt    5    17311.183 ±     925.125    B/op
+o.k.c.h.b.undertow.UndertowBenchmark.hello:·gc.alloc.rate.norm                        thrpt    5    17539.272 ±    1353.671    B/op
+o.k.c.h.b.netty.NettyBenchmark.hello:·gc.alloc.rate.norm                              thrpt    5    18159.731 ±      11.198    B/op
+o.k.c.h.b.vertx.VertxBenchmark.hello:·gc.alloc.rate.norm                              thrpt    5    18356.052 ±    5138.742    B/op
+o.k.c.h.b.spark.SparkBenchmark.hello:·gc.alloc.rate.norm                              thrpt    5    19344.066 ±      79.825    B/op
+o.k.c.h.b.colossus.ColossusBenchmark.hello:·gc.alloc.rate.norm                        thrpt    5    19795.220 ±      30.405    B/op
+o.k.c.h.b.ktor.KtorJettyBenchmark.hello:·gc.alloc.rate.norm                           thrpt    5    23078.183 ±   14589.106    B/op
+o.k.c.h.b.nanohttpd.NanoHttpBenchmark.hello:·gc.alloc.rate.norm                       thrpt    5    23194.923 ±   12469.246    B/op
+o.k.c.h.b.ktor.KtorNettyBenchmark.hello:·gc.alloc.rate.norm                           thrpt    5    25193.748 ±   18345.454    B/op
+o.k.c.h.b.akka.AkkaHttpBenchmark.hello:·gc.alloc.rate.norm                            thrpt    5    29709.269 ±      21.732    B/op
+o.k.c.h.b.grizzly.GrizzlyBenchmark.hello:·gc.alloc.rate.norm                          thrpt    5    42525.645 ±   55506.923    B/op
+o.k.c.h.b.ninjaframework.NinjaBenchmark.hello:·gc.alloc.rate.norm                     thrpt    5   231172.863 ±  457105.347    B/op
+o.k.c.h.b.fluenthttp.FluentHttpBenchmark.hello:·gc.alloc.rate.norm                    thrpt    5  2791458.154 ± 5972694.417    B/op
+```
 
 ## Thanks
 Based on prior work by [rocketraman](https://github.com/rocketraman/kotlin-web-hello-world)

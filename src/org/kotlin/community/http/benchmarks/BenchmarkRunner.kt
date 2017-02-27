@@ -19,7 +19,17 @@ val jmhOptions = OptionsBuilder()
 
 class BenchmarkSettings {
     var threads = 32
+    val profilers = mutableListOf<String>()
     val benchmarks = mutableListOf<BenchmarkDescriptor>()
+
+    fun profile(name: String) {
+        profilers.add(name)
+    }
+
+    inline fun <reified T : Any> run(method: String? = null) {
+        add(T::class.java, method)
+    }
+
     fun add(clazz: Class<*>, method: String? = null) {
         benchmarks.add(BenchmarkDescriptor(clazz, method))
     }
@@ -111,6 +121,9 @@ private fun Any?.executeBenchmarks(benchmarks: List<Method>, iterations: Int) {
 
 fun runJMH(settings: BenchmarkSettings) {
     val options = jmhOptions.apply {
+        settings.profilers.forEach {
+            addProfiler(it)
+        }
         threads(settings.threads)
         settings.benchmarks.forEach { (clazz, method) ->
             val regexp = clazz.name + (method?.let { ".$it" } ?: "")
@@ -118,8 +131,4 @@ fun runJMH(settings: BenchmarkSettings) {
         }
     }
     Runner(options.build()).run()
-}
-
-inline fun <reified T : Any> BenchmarkSettings.run(method: String? = null) {
-    add(T::class.java, method)
 }

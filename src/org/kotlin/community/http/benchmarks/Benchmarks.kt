@@ -17,22 +17,31 @@ import org.kotlin.community.http.benchmarks.wasabi.*
 
 fun main(args: Array<String>) {
     benchmark(args) {
-        run<AkkaHttpBenchmark>()
-        run<ColossusBenchmark>()
-        run<FluentHttpBenchmark>()
-        run<GrizzlyBenchmark>()
-        run<HexagonBenchmark>()
-        run<JettyBenchmark>()
-        run<KtorJettyBenchmark>()
-        run<KtorNettyBenchmark>()
-        run<NanoHttpBenchmark>()
-        run<NettyBenchmark>()
-        run<NinjaBenchmark>()
-        run<SparkBenchmark>()
-        run<UndertowBenchmark>()
-        run<VertxBenchmark>()
-
-        // run<WasabiBenchmark>() // Excluded because it doesn't survive the load
+        setup()
     }
+
+    benchmark(args) {
+        profile("gc")
+        setup()
+    }
+}
+
+private fun BenchmarkSettings.setup() {
+    run<AkkaHttpBenchmark>()
+    run<ColossusBenchmark>()
+    run<FluentHttpBenchmark>()
+    run<GrizzlyBenchmark>()
+    run<HexagonBenchmark>()
+    run<JettyBenchmark>()
+    run<KtorJettyBenchmark>()
+    run<KtorNettyBenchmark>()
+    run<NanoHttpBenchmark>()
+    run<NettyBenchmark>()
+    run<NinjaBenchmark>()
+    run<SparkBenchmark>()
+    run<UndertowBenchmark>()
+    run<VertxBenchmark>()
+
+    // run<WasabiBenchmark>() // Excluded because it doesn't survive the load
 }
 
