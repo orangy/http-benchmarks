@@ -120,6 +120,12 @@
             <groupId>net.code-story</groupId>
             <artifactId>http</artifactId>
             <version>2.105</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-simple</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- Akka Http -->
@@ -150,7 +156,7 @@
         <dependency>
             <groupId>co.there4</groupId>
             <artifactId>hexagon</artifactId>
-            <version>0.10.8</version>
+            <version>0.11.0</version>
         </dependency>
 
         <!-- Grizzly -->

@@ -6,6 +6,7 @@ _Order is alphabetical_
 * Colossus
 * FluentHttp 
 * Grizzly
+* Hexagon
 * Jetty
 * Ktor (Jetty & Netty)
 * NanoHttp
@@ -16,7 +17,6 @@ _Order is alphabetical_
 * Vert.x
 
 #### Excluded
-* Hexagon – doesn't start with latest Jetty
 * Wasabi – doesn't survive the load
 
 # Building
