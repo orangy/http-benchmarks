@@ -21,6 +21,7 @@ fun main(args: Array<String>) {
         run<ColossusBenchmark>()
         run<FluentHttpBenchmark>()
         run<GrizzlyBenchmark>()
+        run<HexagonBenchmark>()
         run<JettyBenchmark>()
         run<KtorJettyBenchmark>()
         run<KtorNettyBenchmark>()
@@ -31,7 +32,6 @@ fun main(args: Array<String>) {
         run<UndertowBenchmark>()
         run<VertxBenchmark>()
 
-        // run<HexagonBenchmark>() // Excluded because of incompatibility(?) with latest Jetty
         // run<WasabiBenchmark>() // Excluded because it doesn't survive the load
     }
 }
