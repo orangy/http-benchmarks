@@ -80,6 +80,7 @@ o.k.c.h.b.ktor.KtorNettyBenchmark.hello         thrpt    5  36.553 ± 0.924  ops
 o.k.c.h.b.nanohttpd.NanoHttpBenchmark.hello     thrpt    5  20.401 ± 0.719  ops/ms
 o.k.c.h.b.ninjaframework.NinjaBenchmark.hello   thrpt    5  12.194 ± 0.210  ops/ms
 o.k.c.h.b.fluenthttp.FluentHttpBenchmark.hello  thrpt    5   1.207 ± 0.036  ops/ms
+```
 
 ## Thanks
 Based on prior work by [rocketraman](https://github.com/rocketraman/kotlin-web-hello-world)
