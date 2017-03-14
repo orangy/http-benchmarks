@@ -13,15 +13,18 @@ import org.kotlin.community.http.benchmarks.ninjaframework.*
 import org.kotlin.community.http.benchmarks.spark.*
 import org.kotlin.community.http.benchmarks.undertow.*
 import org.kotlin.community.http.benchmarks.vertx.*
-import org.kotlin.community.http.benchmarks.wasabi.*
 
 fun main(args: Array<String>) {
     benchmark(args) {
+        iterations = 5
+        iterationTime = 10_000
         setup()
     }
 
     benchmark(args) {
         profile("gc")
+        iterations = 20
+        iterationTime = 500
         setup()
     }
 }
@@ -32,6 +35,7 @@ private fun BenchmarkSettings.setup() {
     run<FluentHttpBenchmark>()
     run<GrizzlyBenchmark>()
     run<JettyBenchmark>()
+    run<HexagonBenchmark>()
     run<KtorJettyBenchmark>()
     run<KtorNettyBenchmark>()
     run<NanoHttpBenchmark>()
@@ -40,8 +44,5 @@ private fun BenchmarkSettings.setup() {
     run<SparkBenchmark>()
     run<UndertowBenchmark>()
     run<VertxBenchmark>()
-
-    // run<HexagonBenchmark>() // Excluded because of incompatibility(?) with latest Jetty
-    // run<WasabiBenchmark>() // Excluded because it doesn't survive the load
 }
 

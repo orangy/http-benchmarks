@@ -7,19 +7,17 @@ import java.lang.reflect.*
 import java.util.concurrent.*
 import kotlin.concurrent.*
 
-val iterations = 10000
+val numberOfOperations = 10000
 val jmhOptions = OptionsBuilder()
         .mode(Mode.Throughput)
         .timeUnit(TimeUnit.MILLISECONDS)
-        .warmupIterations(5)
-        .measurementIterations(5)
-        .warmupTime(TimeValue.milliseconds(10000))
-        .measurementTime(TimeValue.milliseconds(10000))
         .forks(1)
 
 class BenchmarkSettings {
     var threads = 32
     val profilers = mutableListOf<String>()
+    var iterations = 5
+    var iterationTime = 10000L
     val benchmarks = mutableListOf<BenchmarkDescriptor>()
 
     fun profile(name: String) {
@@ -83,10 +81,10 @@ fun runProfiler(settings: BenchmarkSettings) {
         benchmarks.forEach { it.invoke(instance) }
 
         if (settings.threads == 1) {
-            println("Running ${iterations} iterations…")
-            instance.executeBenchmarks(benchmarks, iterations)
+            println("Running ${numberOfOperations} iterations…")
+            instance.executeBenchmarks(benchmarks, numberOfOperations)
         } else {
-            val iterationsPerThread = iterations / settings.threads
+            val iterationsPerThread = numberOfOperations / settings.threads
             println("Running ${settings.threads} threads with $iterationsPerThread iterations per thread…")
             val threads = (1..settings.threads).map { index ->
                 thread(name = "Test Thread $index") {
@@ -124,6 +122,11 @@ fun runJMH(settings: BenchmarkSettings) {
         settings.profilers.forEach {
             addProfiler(it)
         }
+        measurementIterations(settings.iterations)
+        warmupIterations(settings.iterations)
+        warmupTime(TimeValue.milliseconds(settings.iterationTime))
+        measurementTime(TimeValue.milliseconds(settings.iterationTime))
+
         threads(settings.threads)
         settings.benchmarks.forEach { (clazz, method) ->
             val regexp = clazz.name + (method?.let { ".$it" } ?: "")
