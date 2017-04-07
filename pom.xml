@@ -106,12 +106,12 @@
         <dependency>
             <groupId>org.jetbrains.ktor</groupId>
             <artifactId>ktor-netty</artifactId>
-            <version>0.3.1-SNAPSHOT</version>
+            <version>0.3.1</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.ktor</groupId>
             <artifactId>ktor-jetty</artifactId>
-            <version>0.3.1-SNAPSHOT</version>
+            <version>0.3.1</version>
         </dependency>
 
         <!-- SparkJava -->
@@ -125,14 +125,14 @@
         <dependency>
             <groupId>io.undertow</groupId>
             <artifactId>undertow-core</artifactId>
-            <version>1.4.10.Final</version>
+            <version>1.4.12.Final</version>
         </dependency>
 
         <!-- Vert.x -->
         <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-web</artifactId>
-            <version>3.4.0</version>
+            <version>3.4.1</version>
         </dependency>
 
         <!-- nanohttpd-->
@@ -481,6 +481,10 @@
         <repository>
             <id>jcenter</id>
             <url>http://jcenter.bintray.com</url>
+        </repository>
+        <repository>
+            <id>ktor</id>
+            <url>http://dl.bintray.com/kotlin/ktor</url>
         </repository>
         <repository>
             <snapshots>

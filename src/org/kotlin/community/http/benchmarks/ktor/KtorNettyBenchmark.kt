@@ -1,6 +1,7 @@
 package org.kotlin.community.http.benchmarks.ktor
 
 import org.jetbrains.ktor.application.*
+import org.jetbrains.ktor.host.*
 import org.jetbrains.ktor.netty.*
 import org.jetbrains.ktor.response.*
 import org.jetbrains.ktor.routing.*
@@ -16,7 +17,7 @@ fun main(args: Array<String>) {
 open class KtorNettyBenchmark : HttpBenchmarkBase() {
     private lateinit var server: NettyApplicationHost
     override fun startServer(port: Int) {
-        server = embeddedNettyServer(port) {
+        server = embeddedServer(Netty, port) {
             install(Routing) {
                 get("/") {
                     call.respondText("Hello")
