@@ -3,6 +3,7 @@ package org.kotlin.community.http.benchmarks.vertx
 import io.vertx.core.*
 import io.vertx.ext.web.*
 import org.kotlin.community.http.benchmarks.*
+import java.util.concurrent.*
 
 fun main(args: Array<String>) {
     benchmark(args) {
@@ -20,9 +21,13 @@ open class VertxBenchmark : HttpBenchmarkBase() {
             //get().handler(StaticHandler.create("public"))
         }
 
+        val f = CompletableFuture<Unit>()
         vertx.createHttpServer().requestHandler {
             router.accept(it)
-        }.listen(port)
+        }.listen(port) {
+            f.complete(Unit)
+        }
+        f.join()
     }
 
     override fun stopServer() {

@@ -81,7 +81,7 @@ fun runProfiler(settings: BenchmarkSettings) {
         benchmarks.forEach { it.invoke(instance) }
 
         if (settings.threads == 1) {
-            println("Running ${numberOfOperations} iterations…")
+            println("Running $numberOfOperations iterations…")
             instance.executeBenchmarks(benchmarks, numberOfOperations)
         } else {
             val iterationsPerThread = numberOfOperations / settings.threads
