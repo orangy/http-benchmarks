@@ -10,6 +10,7 @@ import org.kotlin.community.http.benchmarks.ktor.*
 import org.kotlin.community.http.benchmarks.nanohttpd.*
 import org.kotlin.community.http.benchmarks.netty.*
 import org.kotlin.community.http.benchmarks.ninjaframework.*
+import org.kotlin.community.http.benchmarks.rapidoid.*
 import org.kotlin.community.http.benchmarks.spark.*
 import org.kotlin.community.http.benchmarks.undertow.*
 import org.kotlin.community.http.benchmarks.vertx.*
@@ -44,5 +45,6 @@ private fun BenchmarkSettings.setup() {
     run<SparkBenchmark>()
     run<UndertowBenchmark>()
     run<VertxBenchmark>()
+    run<RapidoidBenchmark>()
 }
 
