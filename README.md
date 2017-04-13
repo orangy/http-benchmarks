@@ -12,6 +12,7 @@ _Order is alphabetical_
 * NanoHttp
 * Netty
 * NinjaFramework
+* Rapidoid
 * SparkJava
 * Undertow
 * Vert.x
@@ -66,41 +67,43 @@ Benchmark results are from my machine, your mileage may vary.
 
 ```
 Benchmark                                        Mode  Cnt   Score   Error   Units
-o.k.c.h.b.undertow.UndertowBenchmark.hello      thrpt    5  70.388 ± 2.347  ops/ms
-o.k.c.h.b.netty.NettyBenchmark.hello            thrpt    5  65.760 ± 1.071  ops/ms
-o.k.c.h.b.colossus.ColossusBenchmark.hello      thrpt    5  63.154 ± 1.314  ops/ms
-o.k.c.h.b.vertx.VertxBenchmark.hello            thrpt    5  61.173 ± 2.105  ops/ms
-o.k.c.h.b.jetty.JettyBenchmark.hello            thrpt    5  55.182 ± 2.104  ops/ms
-o.k.c.h.b.grizzly.GrizzlyBenchmark.hello        thrpt    5  52.745 ± 0.975  ops/ms
-o.k.c.h.b.ktor.KtorNettyBenchmark.hello         thrpt    5  52.408 ± 2.866  ops/ms
-o.k.c.h.b.spark.SparkBenchmark.hello            thrpt    5  48.425 ± 1.130  ops/ms
-o.k.c.h.b.hexagon.HexagonBenchmark.hello        thrpt    5  45.757 ± 0.595  ops/ms
-o.k.c.h.b.ktor.KtorJettyBenchmark.hello         thrpt    5  43.475 ± 0.630  ops/ms
-o.k.c.h.b.akka.AkkaHttpBenchmark.hello          thrpt    5  39.978 ± 2.994  ops/ms
-o.k.c.h.b.nanohttpd.NanoHttpBenchmark.hello     thrpt    5  20.911 ± 3.312  ops/ms
-o.k.c.h.b.ninjaframework.NinjaBenchmark.hello   thrpt    5  11.885 ± 0.613  ops/ms
-o.k.c.h.b.fluenthttp.FluentHttpBenchmark.hello  thrpt    5   1.223 ± 0.044  ops/ms
+o.k.c.h.b.undertow.UndertowBenchmark.hello      thrpt    5  66.945 ± 1.675  ops/ms
+o.k.c.h.b.netty.NettyBenchmark.hello            thrpt    5  62.882 ± 2.125  ops/ms
+o.k.c.h.b.colossus.ColossusBenchmark.hello      thrpt    5  61.768 ± 1.118  ops/ms
+o.k.c.h.b.jetty.JettyBenchmark.hello            thrpt    5  56.399 ± 0.733  ops/ms
+o.k.c.h.b.ktor.KtorJettyBenchmark.hello         thrpt    5  52.983 ± 2.498  ops/ms
+o.k.c.h.b.ktor.KtorNettyBenchmark.hello         thrpt    5  52.081 ± 1.107  ops/ms
+o.k.c.h.b.vertx.VertxBenchmark.hello            thrpt    5  52.069 ± 1.872  ops/ms
+o.k.c.h.b.grizzly.GrizzlyBenchmark.hello        thrpt    5  51.886 ± 0.811  ops/ms
+o.k.c.h.b.spark.SparkBenchmark.hello            thrpt    5  46.153 ± 1.235  ops/ms
+o.k.c.h.b.hexagon.HexagonBenchmark.hello        thrpt    5  45.912 ± 1.919  ops/ms
+o.k.c.h.b.rapidoid.RapidoidBenchmark.hello      thrpt    5  43.394 ± 1.343  ops/ms
+o.k.c.h.b.akka.AkkaHttpBenchmark.hello          thrpt    5  38.987 ± 3.348  ops/ms
+o.k.c.h.b.nanohttpd.NanoHttpBenchmark.hello     thrpt    5  19.864 ± 1.377  ops/ms
+o.k.c.h.b.ninjaframework.NinjaBenchmark.hello   thrpt    5  12.046 ± 0.266  ops/ms
+o.k.c.h.b.fluenthttp.FluentHttpBenchmark.hello  thrpt    5   1.119 ± 0.027  ops/ms
 ```
 
 ## Memory
 
 Allocation rates per request as reported by JMH GC profiler.
 ```
-Benchmark                                                                         Mode  Cnt        Score         Error   Units
-o.k.c.h.b.jetty.JettyBenchmark.hello:·gc.alloc.rate.norm                         thrpt   20    17356.741 ±     104.412    B/op
-o.k.c.h.b.undertow.UndertowBenchmark.hello:·gc.alloc.rate.norm                   thrpt   20    18016.542 ±     237.042    B/op
-o.k.c.h.b.netty.NettyBenchmark.hello:·gc.alloc.rate.norm                         thrpt   20    18668.902 ±      21.283    B/op
-o.k.c.h.b.vertx.VertxBenchmark.hello:·gc.alloc.rate.norm                         thrpt   20    18356.052 ±    5138.742    B/op
-o.k.c.h.b.spark.SparkBenchmark.hello:·gc.alloc.rate.norm                         thrpt   20    19610.449 ±     442.252    B/op
-o.k.c.h.b.colossus.ColossusBenchmark.hello:·gc.alloc.rate.norm                   thrpt   20    20082.757 ±     771.077    B/op
-o.k.c.h.b.hexagon.HexagonBenchmark.hello:·gc.alloc.rate.norm                     thrpt   20    20233.539 ±     627.870    B/op
-o.k.c.h.b.ktor.KtorJettyBenchmark.hello:·gc.alloc.rate.norm                      thrpt   20    24854.034 ±    1666.493    B/op
-o.k.c.h.b.ktor.KtorNettyBenchmark.hello:·gc.alloc.rate.norm                      thrpt   20    26526.571 ±    2014.653    B/op
-o.k.c.h.b.akka.AkkaHttpBenchmark.hello:·gc.alloc.rate.norm                       thrpt   20    29491.101 ±    2488.843    B/op
-o.k.c.h.b.nanohttpd.NanoHttpBenchmark.hello:·gc.alloc.rate.norm                  thrpt   20    30970.826 ±    4143.206    B/op
-o.k.c.h.b.grizzly.GrizzlyBenchmark.hello:·gc.alloc.rate.norm                     thrpt   20    47768.914 ±    6258.249    B/op
-o.k.c.h.b.ninjaframework.NinjaBenchmark.hello:·gc.alloc.rate.norm                thrpt   20   272792.107 ±   51955.717    B/op
-o.k.c.h.b.fluenthttp.FluentHttpBenchmark.hello:·gc.alloc.rate.norm               thrpt   20  3310991.108 ±  673171.222    B/op
+Benchmark                                                                         Mode  Cnt        Score        Error   Units
+o.k.c.h.b.jetty.JettyBenchmark.hello:·gc.alloc.rate.norm                         thrpt   20    17702.404 ±    104.701    B/op
+o.k.c.h.b.undertow.UndertowBenchmark.hello:·gc.alloc.rate.norm                   thrpt   20    17872.781 ±    313.390    B/op
+o.k.c.h.b.netty.NettyBenchmark.hello:·gc.alloc.rate.norm                         thrpt   20    18195.157 ±     16.175    B/op
+o.k.c.h.b.spark.SparkBenchmark.hello:·gc.alloc.rate.norm                         thrpt   20    19538.354 ±    425.519    B/op
+o.k.c.h.b.colossus.ColossusBenchmark.hello:·gc.alloc.rate.norm                   thrpt   20    19612.308 ±    764.811    B/op
+o.k.c.h.b.hexagon.HexagonBenchmark.hello:·gc.alloc.rate.norm                     thrpt   20    20225.478 ±    637.005    B/op
+o.k.c.h.b.vertx.VertxBenchmark.hello:·gc.alloc.rate.norm                         thrpt   20    20248.098 ±    870.044    B/op
+o.k.c.h.b.rapidoid.RapidoidBenchmark.hello:·gc.alloc.rate.norm                   thrpt   20    21875.677 ±    517.967    B/op
+o.k.c.h.b.ktor.KtorJettyBenchmark.hello:·gc.alloc.rate.norm                      thrpt   20    24324.972 ±   1554.888    B/op
+o.k.c.h.b.ktor.KtorNettyBenchmark.hello:·gc.alloc.rate.norm                      thrpt   20    25899.332 ±   1943.084    B/op
+o.k.c.h.b.akka.AkkaHttpBenchmark.hello:·gc.alloc.rate.norm                       thrpt   20    29382.148 ±   2467.917    B/op
+o.k.c.h.b.nanohttpd.NanoHttpBenchmark.hello:·gc.alloc.rate.norm                  thrpt   20    32291.225 ±   3237.100    B/op
+o.k.c.h.b.grizzly.GrizzlyBenchmark.hello:·gc.alloc.rate.norm                     thrpt   20    47513.623 ±   6259.800    B/op
+o.k.c.h.b.ninjaframework.NinjaBenchmark.hello:·gc.alloc.rate.norm                thrpt   20   272540.830 ±  51894.658    B/op
+o.k.c.h.b.fluenthttp.FluentHttpBenchmark.hello:·gc.alloc.rate.norm               thrpt   20  3366710.592 ± 684588.788    B/op
 ```
 
 ## Thanks
