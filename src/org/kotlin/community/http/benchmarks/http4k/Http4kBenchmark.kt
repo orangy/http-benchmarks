@@ -1,6 +1,6 @@
 package org.kotlin.community.http.benchmarks.http4k
 
-import org.kotlin.community.http.benchmarks.benchmark
+import org.kotlin.community.http.benchmarks.*
 
 fun main(args: Array<String>) {
     benchmark(args) {
