@@ -6,6 +6,7 @@ import org.kotlin.community.http.benchmarks.fluenthttp.*
 import org.kotlin.community.http.benchmarks.grizzly.*
 import org.kotlin.community.http.benchmarks.hexagon.*
 import org.kotlin.community.http.benchmarks.jetty.*
+import org.kotlin.community.http.benchmarks.http4k.*
 import org.kotlin.community.http.benchmarks.ktor.*
 import org.kotlin.community.http.benchmarks.nanohttpd.*
 import org.kotlin.community.http.benchmarks.netty.*
@@ -37,6 +38,8 @@ private fun BenchmarkSettings.setup() {
     run<GrizzlyBenchmark>()
     run<JettyBenchmark>()
     run<HexagonBenchmark>()
+    run<Http4kJettyBenchmark>()
+    run<Http4kNettyBenchmark>()
     run<KtorJettyBenchmark>()
     run<KtorNettyBenchmark>()
     run<NanoHttpBenchmark>()
