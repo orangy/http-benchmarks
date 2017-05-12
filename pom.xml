@@ -106,12 +106,12 @@
         <dependency>
             <groupId>org.jetbrains.ktor</groupId>
             <artifactId>ktor-netty</artifactId>
-            <version>0.3.1</version>
+            <version>0.3.2</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.ktor</groupId>
             <artifactId>ktor-jetty</artifactId>
-            <version>0.3.1</version>
+            <version>0.3.2</version>
         </dependency>
 
         <!-- SparkJava -->
@@ -392,22 +392,6 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>com.devexperts.bintray</groupId>
-                <artifactId>bintray-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>bintray-deploy</id>
-                        <goals>
-                            <goal>publish</goal>
-                        </goals>
-                        <configuration>
-                            <id>bintray</id>
-                            <url>https://api.bintray.com/maven/kotlin/ktor/ktor</url>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.0.2</version>
@@ -418,27 +402,6 @@
                             <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
                         </manifest>
                     </archive>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.jetbrains.dokka</groupId>
-                <artifactId>dokka-maven-plugin</artifactId>
-                <version>${dokka.version}</version>
-                <executions>
-                    <execution>
-                        <phase>pre-site</phase>
-                        <goals>
-                            <goal>dokka</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <sourceLinks>
-                        <link>
-                            <dir>${project.basedir}/src</dir>
-                            <url>http://github.com/Kotlin/ktor</url>
-                        </link>
-                    </sourceLinks>
                 </configuration>
             </plugin>
         </plugins>
