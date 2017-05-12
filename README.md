@@ -7,6 +7,7 @@ _Order is alphabetical_
 * FluentHttp 
 * Grizzly
 * Hexagon 
+* Http4k (Jetty & Netty) 
 * Jetty
 * Ktor (Jetty & Netty)
 * NanoHttp
