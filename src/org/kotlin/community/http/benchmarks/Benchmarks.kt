@@ -14,7 +14,7 @@ import org.kotlin.community.http.benchmarks.ninjaframework.*
 import org.kotlin.community.http.benchmarks.rapidoid.*
 import org.kotlin.community.http.benchmarks.spark.*
 import org.kotlin.community.http.benchmarks.undertow.*
-import org.kotlin.community.http.benchmarks.vertx.*
+import org.kotlin.community.http.benchmarks.vertxweb.*
 
 fun main(args: Array<String>) {
     benchmark(args) {
@@ -48,6 +48,7 @@ private fun BenchmarkSettings.setup() {
     run<SparkBenchmark>()
     run<UndertowBenchmark>()
     run<VertxBenchmark>()
+    run<VertxWebBenchmark>()
     run<RapidoidBenchmark>()
 }
 
