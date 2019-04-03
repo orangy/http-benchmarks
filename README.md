@@ -9,6 +9,7 @@ _Order is alphabetical_
 * Hexagon 
 * Http4k (Jetty & Netty) 
 * Jetty
+* JLHTTP
 * Ktor (Jetty & Netty)
 * NanoHttp
 * Netty
